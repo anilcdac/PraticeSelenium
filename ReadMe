@@ -1,0 +1,72 @@
+1. differences between relative and absolute XPath.
+2. How to traverse to sibling element
+3. Using child element traverse back to parent
+4. How to identify objects using text
+
+
+
+1. differences between relative and absolute XPath.
+a] Relative
+Relative - does not depend on parent node
+xpath
+//tagName[attribute=' ']
+//*[id=' ']
+
+
+
+
+
+b] Absolute
+//parent/child
+
+//Body/div/div/div/ul/li[2]
+
+
+
+ab]  Relative xpath is preferred , as dev changes will affect absolute xpath
+
+
+2. How to traverse to sibling element
+scenario : parent and target both dynamic . target sibling is static, make use of it  L2
+
+<ul class= " "   role = " "      -  dynamic
+  <li id=csk      - static id
+  <li id=ab_123  - dynamic id
+
+Syntax
+//tagName[@attribute='value']/following-sibling::/li[1]
+
+eg:
+//li[@id='csk']/following-sibling::/li[1]
+
+li[1] means immediate  next sibling
+li[2] means second sibling from the li with id mentioned
+
+
+
+
+3. Using child element traverse back to parent
+Scenario: parent is dynamic, child is static
+
+Syntax:
+//tagName[@attribute='value']/parent::/ul
+
+eg:
+//li[@id='csk']/parent::/ul
+
+Note: this can be done in xpath only, in css we cannot traverse back L2
+
+
+4. How to identify objects using text
+
+syntax:
+//*[text()='']
+
+eg:
+//*[text()=' selenium ']
+
+Note if space present before after text, keep it like that
+We dont use this, as we change the text labels many times during makeover, as requested by business
+
+
+
